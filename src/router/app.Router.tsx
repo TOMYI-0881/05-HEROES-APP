@@ -10,7 +10,7 @@ export const appRouter = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: "/hero/1",
+    path: "/heroes/1",
     element: <HeroPage />,
   },
   {
