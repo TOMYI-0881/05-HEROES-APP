@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { useState } from "react";
 
 interface Props {
   totalPages: number;
@@ -7,15 +8,20 @@ interface Props {
 
 const CustomPagination = ({ totalPages }: Props) => {
   const def = 2;
+  const [page, setPage] = useState(1);
   return (
     <div className="flex items-center justify-center space-x-2">
-      <Button variant="outline" size="sm" disabled>
+      <Button variant="outline" size="sm" disabled={page === 1}>
         <ChevronLeft className="h-4 w-4" />
         atras
       </Button>
 
       {Array.from({ length: totalPages }).map((_, index) => (
-        <Button variant={def === index + 1 ? "default" : "outline"} size="sm">
+        <Button
+          variant={page === index + 1 ? "default" : "outline"}
+          size="sm"
+          onClick={() => setPage(index + 1)}
+        >
           {index + 1}
         </Button>
       ))}
@@ -29,7 +35,7 @@ const CustomPagination = ({ totalPages }: Props) => {
         <MoreHorizontal className="h-4 w-4" />
       </Button>
 
-      <Button variant="outline" size="sm">
+      <Button variant="outline" size="sm" disabled={page === totalPages}>
         siguiente
         <ChevronRight className="h-4 w-4" />
       </Button>
