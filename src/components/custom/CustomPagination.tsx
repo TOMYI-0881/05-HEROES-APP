@@ -18,6 +18,7 @@ const CustomPagination = ({ totalPages }: Props) => {
 
       {Array.from({ length: totalPages }).map((_, index) => (
         <Button
+          key={index}
           variant={page === index + 1 ? "default" : "outline"}
           size="sm"
           onClick={() => setPage(index + 1)}

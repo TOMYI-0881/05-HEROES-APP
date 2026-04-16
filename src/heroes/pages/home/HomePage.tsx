@@ -19,7 +19,15 @@ export const HomePage = () => {
         description="Descrubre, explora y administra super heroes y villanos"
       />
 
-      <CustomBreadcrumbs />
+      <CustomBreadcrumbs
+        currentPage="super Heroes"
+        breadCrumbs={[
+          { label: "heroes", to: "/" },
+          { label: "heroes", to: "/" },
+          { label: "heroes", to: "/" },
+          { label: "heroes", to: "/" },
+        ]}
+      />
 
       {/* Stats Dashboard */}
       <HeroStats />

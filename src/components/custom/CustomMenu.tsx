@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,6 +8,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const CustomMenu = () => {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   console.log({ pathname });
 
@@ -20,17 +21,25 @@ const CustomMenu = () => {
         {/* Home */}
         <NavigationMenuItem className="bg-indigo-500  text-amber-50 rounded-md hover:text-black">
           <NavigationMenuLink
-            className={cn(isActive("/") && "bg-orange-300 text-black")}
+            onClick={() => navigate("/")}
+            className={cn(
+              isActive("/") && "bg-orange-300 text-black",
+              "cursor-pointer",
+            )}
           >
-            <Link to="/">inicio</Link>
+            inicio
           </NavigationMenuLink>
         </NavigationMenuItem>
         {/* Search */}
         <NavigationMenuItem className="bg-indigo-500  text-amber-50 rounded-md hover:text-black">
           <NavigationMenuLink
-            className={cn(isActive("/search") && "bg-orange-300 text-black")}
+            onClick={() => navigate("/search")}
+            className={cn(
+              isActive("/search") && "bg-orange-300 text-black",
+              "cursor-pointer",
+            )}
           >
-            <Link to="/search">Busqueda de Heroes</Link>
+            Busqueda de Heroes
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>

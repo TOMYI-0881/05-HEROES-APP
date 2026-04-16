@@ -3,29 +3,39 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { useNavigate } from "react-router";
 
-interface Props {
-  pageTitle: string;
-  pathLength: string;
+interface Breadcrum {
+  label: string;
+  to: string;
 }
 
-const CustomBreadcrumbs = ({ pageTitle, pathLength }: Props) => {
+interface Props {
+  currentPage: string;
+  breadCrumbs?: Breadcrum[];
+}
+
+const CustomBreadcrumbs = ({ currentPage, breadCrumbs = [] }: Props) => {
+  const navigate = useNavigate();
   return (
-    <Breadcrumb>
+    <Breadcrumb className="mb-4 cursor-pointer">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        /
+        {breadCrumbs.map((crumb) => (
+          <div className="flex items-center" key={Math.random()}>
+            <BreadcrumbItem>
+              <BreadcrumbLink onClick={() => navigate(crumb.to)}>
+                {crumb.label} /
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </div>
+        ))}
         <BreadcrumbItem>
-          <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+          <BreadcrumbLink className="text-black">{currentPage}</BreadcrumbLink>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
