@@ -22,7 +22,7 @@ export const HomePage = () => {
   //     .catch(() => console.log("nalgas, error al llamar a la api"));
   // });
 
-  const {} = useQuery({
+  const { data } = useQuery({
     queryKey: ["heroes"],
     queryFn: () => getHeroesByPage(),
     staleTime: 1000 * 60 * 5, //5 minutos
