@@ -22,11 +22,13 @@ export const HomePage = () => {
   //     .catch(() => console.log("nalgas, error al llamar a la api"));
   // });
 
-  const { data } = useQuery({
+  const { data: heroesResponse } = useQuery({
     queryKey: ["heroes"],
     queryFn: () => getHeroesByPage(),
     staleTime: 1000 * 60 * 5, //5 minutos
   });
+
+  console.log({ heroesResponse });
 
   return (
     <>

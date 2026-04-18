@@ -2,11 +2,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { queryClient } from "@/HeroesApp";
 import { Brain, Eye, Gauge, Heart, Shield, Zap } from "lucide-react";
 
 export const HeroGridCard = () => {
+  const heroes = queryClient.getQueryData(["heroes"]);
   return (
-    <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50">
+    <Card className="w-72 group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50">
       <div className="relative h-64 overflow-hidden">
         <img
           src="/placeholder.svg?height=300&width=300"

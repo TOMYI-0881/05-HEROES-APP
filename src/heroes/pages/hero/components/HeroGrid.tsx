@@ -1,3 +1,4 @@
+import type { Length } from "node_modules/@base-ui/react/esm/floating-ui-react";
 import { HeroGridCard } from "./HeroGridCard";
 
 export const HeroGrid = () => {
